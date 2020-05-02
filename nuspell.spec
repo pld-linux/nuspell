@@ -1,4 +1,8 @@
 # TODO: catch2 for tests, https://github.com/catchorg/Catch2.git
+#
+# Conditional build:
+%bcond_without	man	# build without man pages
+
 Summary:	Nuspell spell checking library
 Summary(pl.UTF-8):	Biblioteka sprawdzania pisowni Nuspell
 Name:		nuspell
@@ -15,7 +19,7 @@ BuildRequires:	cmake >= 3.8
 BuildRequires:	libicu-devel
 # -std=c++17
 BuildRequires:	libstdc++-devel >= 6:7
-BuildRequires:	ronn
+%{?with_man:BuildRequires:	ronn}
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -107,7 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS CHANGELOG.md README.md docs/Third-party_licenses
 %attr(755,root,root) %{_bindir}/nuspell
-%{_mandir}/man1/nuspell.1*
+%{?with_man:%{_mandir}/man1/nuspell.1*}
 
 %files libs
 %defattr(644,root,root,755)
