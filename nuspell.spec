@@ -6,13 +6,13 @@
 Summary:	Nuspell spell checking library
 Summary(pl.UTF-8):	Biblioteka sprawdzania pisowni Nuspell
 Name:		nuspell
-Version:	3.0.0
-Release:	2
+Version:	3.1.2
+Release:	1
 License:	LGPL v3+
 Group:		Libraries
 #Source0Download: https://github.com/nuspell/nuspell/releases
 Source0:	https://github.com/nuspell/nuspell/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	4d8bd5582fd3d467267bdea31bdc1767
+# Source0-md5:	e720c3d4adbaad850bf7a0560659a30e
 URL:		https://nuspell.github.io/
 BuildRequires:	boost-devel >= 1.62
 BuildRequires:	cmake >= 3.8
