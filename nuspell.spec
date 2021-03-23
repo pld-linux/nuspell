@@ -1,4 +1,4 @@
-# TODO: catch2 for tests, https://github.com/catchorg/Catch2.git
+# TODO: catch2 >= 2.3.0 for tests, https://github.com/catchorg/Catch2.git
 #
 # Conditional build:
 %bcond_without	man	# build without man pages
@@ -6,20 +6,19 @@
 Summary:	Nuspell spell checking library
 Summary(pl.UTF-8):	Biblioteka sprawdzania pisowni Nuspell
 Name:		nuspell
-Version:	3.1.2
+Version:	4.2.0
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
 #Source0Download: https://github.com/nuspell/nuspell/releases
 Source0:	https://github.com/nuspell/nuspell/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	e720c3d4adbaad850bf7a0560659a30e
+# Source0-md5:	16441229868de708939765e52f75a2b1
 URL:		https://nuspell.github.io/
-BuildRequires:	boost-devel >= 1.62
 BuildRequires:	cmake >= 3.8
 BuildRequires:	libicu-devel
 # -std=c++17
 BuildRequires:	libstdc++-devel >= 6:7
-%{?with_man:BuildRequires:	ronn}
+%{?with_man:BuildRequires:	pandoc}
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -116,7 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libnuspell.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libnuspell.so.3
+%attr(755,root,root) %ghost %{_libdir}/libnuspell.so.4
 
 %files devel
 %defattr(644,root,root,755)
