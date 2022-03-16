@@ -14,6 +14,7 @@ BuildRequires:	cmake >= 3.8
 BuildRequires:	libicu-devel
 # -std=c++17, std::from_chars
 BuildRequires:	libstdc++-devel >= 6:8
+BuildRequires:	rpmbuild(macros) >= 1.749
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
