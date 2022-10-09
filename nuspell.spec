@@ -2,13 +2,13 @@
 Summary:	Nuspell spell checking library
 Summary(pl.UTF-8):	Biblioteka sprawdzania pisowni Nuspell
 Name:		nuspell
-Version:	5.1.0
-Release:	2
+Version:	5.1.2
+Release:	1
 License:	LGPL v3+
 Group:		Libraries
 #Source0Download: https://github.com/nuspell/nuspell/releases
 Source0:	https://github.com/nuspell/nuspell/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	0a832f7932a7052e9cd9e27014be36c8
+# Source0-md5:	8ca8e48cceb5c897df53c3a131b1ebe2
 URL:		https://nuspell.github.io/
 BuildRequires:	cmake >= 3.8
 BuildRequires:	libicu-devel
