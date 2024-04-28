@@ -1,17 +1,17 @@
-# TODO: catch2 >= 2.3.0 for tests, https://github.com/catchorg/Catch2.git
+# TODO: catch2 >= 3.1.1 for tests, https://github.com/catchorg/Catch2.git
 Summary:	Nuspell spell checking library
 Summary(pl.UTF-8):	Biblioteka sprawdzania pisowni Nuspell
 Name:		nuspell
-Version:	5.1.3
+Version:	5.1.4
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
 #Source0Download: https://github.com/nuspell/nuspell/releases
 Source0:	https://github.com/nuspell/nuspell/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	a0e833e8272327ddf66c3764d2176cfb
+# Source0-md5:	d554b150623aa672352cabed68cbab4a
 URL:		https://nuspell.github.io/
-BuildRequires:	cmake >= 3.8
-BuildRequires:	libicu-devel
+BuildRequires:	cmake >= 3.12
+BuildRequires:	libicu-devel >= 60
 # -std=c++17, std::from_chars
 BuildRequires:	libstdc++-devel >= 6:8
 BuildRequires:	rpmbuild(macros) >= 1.749
