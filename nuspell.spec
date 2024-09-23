@@ -1,19 +1,24 @@
 # TODO: catch2 >= 3.1.1 for tests, https://github.com/catchorg/Catch2.git
+#
+# Conditional build:
+%bcond_without	man	# man page
+
 Summary:	Nuspell spell checking library
 Summary(pl.UTF-8):	Biblioteka sprawdzania pisowni Nuspell
 Name:		nuspell
-Version:	5.1.4
+Version:	5.1.6
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
 #Source0Download: https://github.com/nuspell/nuspell/releases
 Source0:	https://github.com/nuspell/nuspell/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	d554b150623aa672352cabed68cbab4a
+# Source0-md5:	d004d5616ec5f9a0e79c6b21df3e1ce7
 URL:		https://nuspell.github.io/
 BuildRequires:	cmake >= 3.12
 BuildRequires:	libicu-devel >= 60
 # -std=c++17, std::from_chars
 BuildRequires:	libstdc++-devel >= 6:8
+%{?with_man:BuildRequires:	pandoc}
 BuildRequires:	rpmbuild(macros) >= 1.749
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -68,7 +73,7 @@ Summary:	Header files for Nuspell library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Nuspell
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	libicu-devel
+Requires:	libicu-devel >= 60
 Requires:	libstdc++-devel >= 6:8
 
 %description devel
@@ -88,6 +93,7 @@ Pliki nagłówkowe biblioteki Nuspell.
 install -d build
 cd build
 %cmake .. \
+	%{!?with_man:-DBUILD_DOCS=OFF} \
 	-DBUILD_TESTING=OFF
 
 %{__make}
@@ -111,6 +117,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS CHANGELOG.md README.md docs/Third-party_licenses
 %attr(755,root,root) %{_bindir}/nuspell
+%if %{with man}
+%{_mandir}/man1/nuspell.1*
+%endif
 
 %files libs
 %defattr(644,root,root,755)
